@@ -22,30 +22,14 @@ flowchart LR
     Ball[Шарик] -.->|отслеживание| Camera
     Platform[Платформа] --- Servo
 
+### Архитектура
+PID_camera_script.py - скрипт для камеры, для захвата объекта и отслеживания его положения
+pid_regulator.ino - скрипт для arduino, отвечающий за обработку координат объекта, PID и поворот серво
 
-## Быстрый старт
+## Как поднять
 
-### Требования
+1) Подключить камеру к ноутбуку или rasberi
+2) убедиться что налажена передача данных с камеры на ардуино
+3) на ноутбуке запустить скрипт PID_camera_script.py
+4) на arduino загрузить pid_regulator.ino
 
-- Python 3.9+
-- Redis (установлен локально или через Docker)
-
-### Установка
-
-```bash
-# 1. Клонировать репозиторий
-git clone https://github.com/PerKyyling/AvailOlimp
-cd AvailOlimp
-
-# 2. Установить зависимости
-pip install -r requirements.txt
-
-# 3. Запустить Redis (в отдельном окне)
-redis-server
-# Или через Docker: docker run -d -p 6379:6379 redis
-
-# 4. Запустить PvE сервис (одиночный режим)
-python index.py
-
-# 5. Запустить PvP сервис (в новом окне)
-python server_for_game.py
