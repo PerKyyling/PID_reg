@@ -14,11 +14,27 @@
 
 ### Схема подключения
 flowchart LR
-    Camera[Камера] --> PC[ПК/Ноутбук]
-    PC -->|USB| Arduino[Arduino/Плата]
-    Arduino --> breadboard[Макетная плата]
-    servo[Сервопривода] --> breadboard[Макетная плата]
-    power[Доп. питание] --> breadboard[Макетная плата]
+    Camera[Камера] --> PC[ПК / Raspberry]
+    
+    PC -->|USB| Arduino[Arduino]
+    
+    subgraph Power[Питание]
+        ExtPower[Доп. питание<br/>5В / 2А+]
+    end
+    
+    subgraph ArduinoConnect[Подключение к Arduino]
+        Arduino -->|5V| Breadboard
+        Arduino -->|GND| Breadboard
+        Arduino -->|PWM сигнал| Breadboard
+    end
+    
+    subgraph ServoPower[Питание сервы]
+        ExtPower -->|VCC| Breadboard
+        ExtPower -->|GND| Breadboard
+    end
+    
+    Breadboard --> Servo[Сервопривод]
+    
     Ball[Шарик] -.->|отслеживание| Camera
     Platform[Платформа] --- Servo
 
