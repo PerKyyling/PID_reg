@@ -76,7 +76,7 @@ flowchart LR
 
 ---
 
-### Cтруктура
+### Структура
 
 pid_regulator.ino - Скетч для Arduino (PID + серво)
 
@@ -88,4 +88,16 @@ README.md - Этот файл
 
 ---
 
+## Чтобы запустить проект
+
+1) Иметь физический стенд, способный вращаться по 2 осям (x / y)
+2) Убедиться в корректности всех подключений
+```bash
+# 1) установить все зависимости на пк (raspberry)
+pip install -r requirements.txt
+
+Загрузить pid_regulator.ino в arduino
+
+# запустить скрипт камеры
+python PID_camera_script.py
 
