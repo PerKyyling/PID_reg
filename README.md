@@ -13,6 +13,7 @@
 - макетной платы
 
 ### Схема подключения
+```mermaid
 flowchart LR
     Camera[Камера] --> PC[ПК / Raspberry]
     
